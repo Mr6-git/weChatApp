@@ -1,0 +1,9 @@
+/* components/tab-content/index.wxss */
+.tab-content{
+  width:100%;
+  height:100%;
+  position:absolute;
+  top:0;
+  left:0;
+  transition:all 300ms ease 0s;
+}

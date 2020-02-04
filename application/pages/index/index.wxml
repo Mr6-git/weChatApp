@@ -1,0 +1,26 @@
+<!--index.wxml-->
+<view class="root-container">
+  <view class='cont-box' hidden="{{active !== 'expert'}}" wx:if="{{open['expert']}}">
+    <expert noMenu="{{ settingMenu.award }}" isScan />
+  </view>
+  <view class='cont-box' hidden="{{active !== 'ticket'}}" wx:if="{{open['ticket']}}">
+    <ticket noMenu="{{ settingMenu.award }}" />
+  </view>
+  <view class='cont-box' hidden="{{active !== 'my'}}" wx:if="{{open['my']}}">
+    <my noMenu="{{ settingMenu.award }}" />
+  </view>
+
+  <view class="fix-menu">
+    <view
+      bindtap="switchModal"
+      wx:for="{{menu}}"
+      wx:key="key"
+      wx:for-item="item"
+      class="{{active == item.key ? 'active' : ''}}"
+      data-index="{{item.key}}"
+    >
+      <image src="{{ active == item.key ? item.src2 : item.src}}"></image>
+      <view class='menu-text'>{{item.value}}</view>
+    </view>
+  </view>
+</view>

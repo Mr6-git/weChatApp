@@ -1,0 +1,10 @@
+/**app.wxss**/
+page{
+  font-size: 24rpx;
+  height: 100vh;
+  overflow: hidden;
+}
+
+view, scroll-view, image {
+  box-sizing: border-box;
+}

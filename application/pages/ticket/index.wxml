@@ -1,0 +1,28 @@
+<!--application/pages/index/ticket/index.wxml-->
+<view class="container">
+  <view class='header {{ platform == "android" ? "android" : "" }}'>
+    <image class='icon-back' src='/images/back.png' bindtap="goBack"></image>
+    <view>我的票夹</view>
+  </view>
+  <view class='main {{ platform == "android" ? "android" : "" }}'>
+    <scroll-load bindrefresh="refresh" bindloadmore="loadmore">
+      <view wx:for="{{ listData }}" wx:for-item="item" data-id="{{item._id}}" wx:key="item._id" class="ticketList" bindtap="gotoDetail">
+        <image class="list-left" src="{{item.cover_img}}"></image>
+        <view class="list-right">
+          <view class="right-title">{{item.ticket_name}}</view>
+          <view class="right-time">{{item.start_time}}</view>
+          <view class="right-addr">{{item.city}} | {{item.location}}</view>
+          <view class="right-price">￥{{item.price/100}}/张</view>
+          <view wx:if="{{item.status == 1}}" class="right-buy type1">出票中</view>
+          <view wx:if="{{item.status == 0}}" class="right-buy type2">待支付</view>
+          <view wx:if="{{item.status == 2}}" class="right-buy type3">已出票</view>
+          <view wx:if="{{item.status == 3}}" class="right-buy type4">已领取</view>
+          <view wx:if="{{item.status == 4}}" class="right-buy type3">已取消</view>
+          <view wx:if="{{item.status == 5}}" class="right-buy type3">已超时</view>
+          <view wx:if="{{item.status == 6}}" class="right-buy type3">支付失败</view>
+          <view wx:if="{{item.status == 7}}" class="right-buy type3">出票失败</view>
+        </view>
+      </view>
+    </scroll-load>
+  </view>
+</view>

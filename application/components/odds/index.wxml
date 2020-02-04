@@ -1,0 +1,58 @@
+<!--components/odds/index.wxml-->
+<wxs src="../../wxs/utils.wxs" module="utils" />
+<view bindtap="closeLunch" class="container" style="{{show ? 'display: block;' : ''}}">
+  <view catchtap="stopEvent" class="lunch-bottom" bindtransitionend="transitionends" style="{{lunchShow ? 'transform: translate3d(0, 0, 0)' : ''}}">
+    <view class="title">
+      <view>{{fundData.balance.name}}余额：{{utils.formatMoney(fundData.balance.value / fundData.balance.rate)}}</view>
+      <view class="close-btn" bindtap="closeLunch"><image src='/images/common/match-close.png'></image></view>
+    </view>
+    <view  class='odds-tip' wx:if="{{parentInfo.sp_model == '1'}}">
+      <image src='/images/common/notice.png' />提示:奖池模式下浮动赔率仅供参考，以最终赔率为准。
+    </view>
+    <view class="odds-info">
+      <view class="left">
+        <view class="win-title">{{info.name}} @{{info.odds}}</view>
+        <view class="match-desc">{{parentInfo.name}}</view>
+        <view class="match-infoc">{{event.home_team}} VS {{event.away_team}}</view>
+      </view>
+      <view class="right">
+        <view class="showinput">{{value}}</view>
+        <view class="win-res" wx:if="{{parentInfo.sp_model == '1'}}">
+            剩余可投注额：<text class="oranges">{{utils.formatMoney(canPool)}}{{fundData.balance.name}}</text>
+         </view>
+        <view class="win-res" wx:else>
+            最高返还：<text class="oranges">{{utils.formatMoney(winValue)}}{{fundData.points.name}}</text>
+         </view>
+      </view>
+    </view>
+    <view class="keybord">
+      <view>
+        <view bindtap="keydownValue" data-value="{{i}}" wx:key="i" wx:for="{{[1, 2, 3, 4, 5, 6, 7, 8, 9, 0]}}" wx:for-item="i">{{i}}</view>
+      </view>
+      <view>
+        <view bindtap="allIn">全押</view>
+        <view bindtap="mutipleValue" data-value="10">十</view>
+        <view bindtap="mutipleValue" data-value="100">百</view>
+        <view bindtap="mutipleValue" data-value="1000">千</view>
+        <view bindtap="mutipleValue" data-value="10000">万</view>
+        <view bindtap="clearValue">清除</view>
+      </view>
+    </view>
+    <view class="foot-box">
+      <view class="money-total">
+        <view>本次投注：{{utils.formatMoney(value)}}{{fundData.balance.name}}</view>
+        <view class='moeny-tip'>以积分的方式进行派奖</view>
+      </view>
+      <view class="submit-btn" bindtap="sendOrder">
+          <block wx:if="{{ value * fundData.balance.rate <= fundData.balance.value }}">
+            <view>确认投注</view>
+            <view>接受赔率变化</view>
+          </block>
+          <block wx:else>
+            <view>立即充值</view>
+            <view>{{fundData.balance.name}}不足</view>
+          </block>
+      </view>
+    </view>
+  </view>
+</view>

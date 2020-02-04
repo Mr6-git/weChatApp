@@ -1,0 +1,8 @@
+.login {
+  height: 100%;
+  padding: 96rpx 56rpx 0;
+}
+.close-img {
+  width: 36rpx;
+  height: 36rpx;
+}

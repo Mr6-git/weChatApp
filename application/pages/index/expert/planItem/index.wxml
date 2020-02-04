@@ -1,0 +1,59 @@
+<!--pages/index/expert/planItem/index.wxml-->
+<view
+  data-id="{{ data._id }}"
+  bindtap="gotoDetail"
+  class='plan-item'
+>
+  <view class='flex-sb'>
+    <view class='flex-left'>
+      <image class='avatar' src='{{ data.expert.avatar }}'></image>
+      <view>
+        <text class='name'>{{ data.expert.name }}</text>
+        <view class='flex-left'>
+          <view class='blue-box'>近{{ data.expert.lately_count }}中{{ data.expert.lately_hit_count }}</view>
+          <view class='red-box'>{{ data.expert.highest_red }}连红</view>
+        </view>
+      </view>
+    </view>
+    <view class='orange'>
+      <view>
+        <text class='rate'>{{ data.rate }}</text>
+        <text class='rate-char'>%</text>
+      </view>
+      <view class='rate-text'>命中率</view>
+    </view>
+  </view>
+
+  <view class='title'>{{ data.title }}</view>
+
+  <view class='mid-box flex-sb'>
+    <view>
+      <view class='mid-title'>{{ data.event.league_name }}</view>
+      <view class='flex-left'>
+        <image class='team-img' src='{{ data.event.home_team.icon }}'></image>
+        <text>{{ data.event.home_team.name }}</text>
+        <text class='vs'>VS</text>
+        <image class='team-img' src='{{ data.event.away_team.icon }}'></image>
+        <text>{{ data.event.away_team.name }}</text>
+      </view>
+    </view>
+    <view class='odd' wx:if="{{ data.event.sp_name }}">{{ data.event.sp_name }}</view>
+    <view wx:else="{{ data.event.sp_name }}"></view>
+  </view>
+
+  <view class='flex-sb'>
+    <view>
+      <text class='time'>{{ data.create_time_str }}</text>
+      <text wx:if="{{ data.levelItem.name }}">
+        <text class='divider'>|</text>
+        <text class='free'>{{ data.levelItem.name }}免费</text>
+      </text>
+      
+    </view>
+    <view></view>
+    <!-- <view class='pay flex-left'>
+      <image src='/images/common/coin.png'></image>
+      {{ data.price }}{{ fund.balance.name }}
+    </view> -->
+  </view>
+</view>

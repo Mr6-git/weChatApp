@@ -1,0 +1,24 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/login/index",
+    "pages/webview/index",
+    "pages/charge/index",
+    "pages/bill/index",
+    "pages/account/index",
+    "pages/plan/index",
+    "pages/planDetail/index",
+    "pages/about/license/index",
+    "pages/about/privacy/index",
+    "pages/ticket/index",
+    "pages/ticket/orderDetail/index"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "",
+    "navigationBarTextStyle": "black",
+    "navigationStyle": "custom"
+  },
+  "sitemapLocation": "sitemap.json"
+}

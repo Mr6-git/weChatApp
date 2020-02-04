@@ -1,0 +1,60 @@
+/**index.wxss**/
+
+.fix-menu {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  height: 90rpx;
+  font-size: 18rpx;
+  background: #fff;
+}
+.fix-menu::after{
+  content: ' ';
+  position: absolute;
+  pointer-events: none;
+  transform-origin: 0 0; 
+  top: 0;
+  left: 0;
+  width: 200%; 
+  height: 200%; 
+  transform: scaleY(0.5);
+  border-top: 1px solid #ccc;
+}
+
+.fix-menu > view {
+  flex: 1;
+  text-align: center;
+  line-height: 1.2;
+}
+
+.fix-menu > view.active {
+  color: #FF6600;
+}
+
+.fix-menu > view > image {
+  margin: 10rpx 0 5rpx;
+  width: 40rpx;
+  height: 40rpx;
+}
+
+.active .menu-text {
+  color: #FF6600;
+}
+
+.menu-text {
+  color: #777;
+  font-size: 20rpx;
+}
+
+.root-container {
+  position: relative;
+  height: 100%;
+}
+
+.root-container .cont-box {
+  height: calc(100% - 90rpx);
+  /* height: 100%; */
+  overflow: hidden;
+}

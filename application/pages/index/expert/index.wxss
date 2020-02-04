@@ -1,0 +1,109 @@
+/* pages/index/expert/index.wxss */
+.container{
+  height: 100%;
+  width: 100%;
+  background: #f5f5f5;
+  overflow: hidden;
+}
+.header {
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 128rpx;
+  padding: 42rpx 0 0;
+  background: #ffffff;
+  color: #FF6600;
+  font-size: 38rpx;
+}
+.header.android {
+  height: 150rpx;
+  padding: 65rpx 0 0;
+}
+.header > view {
+  padding: 0 30rpx;
+}
+.menu-tab {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 8rpx 10rpx 14rpx;
+  color: #7F7F7F;
+  font-size: 28rpx;
+}
+.menu-tab > view {
+  position: relative;
+  height: 48rpx;
+  margin: 0 15rpx;
+  padding: 0 10rpx;
+  color: #999999;
+  line-height: 48rpx;
+  flex: none;
+}
+.menu-tab .active {
+  color: #000000;
+}
+.menu-tab .active::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: -9rpx;
+  width: 40rpx;
+  height: 6rpx;
+  background: #FF6600;
+  border-radius: 6rpx;
+  transform: translateX(-50%);
+}
+.main-contain {
+  height: calc(100% - 192rpx);
+  background-color: #f5f5f5;
+}
+.main-contain.padding {
+  height: calc(100% - 216rpx);
+}
+.android .main-contain {
+  height: calc(100% - 238rpx);
+}
+.android .main-contain.padding {
+  height: calc(100% - 262rpx);
+}
+.banner {
+  width: 690rpx;
+  height: 320rpx;
+  margin: 10rpx 30rpx 20rpx;
+  border-radius: 14rpx;
+}
+.choose-tab {
+  display: flex;
+  align-items: center;
+  width: 690rpx;
+  height: 64rpx;
+  margin: 0 30rpx;
+  background: #E9E9E9;
+  color: #666666;
+  font-size: 28rpx;
+  border-radius: 10rpx;
+}
+.choose-tab > view {
+  flex: none;
+  width: 125rpx;
+  height: 100%;
+  text-align: center;
+  line-height: 64rpx;
+}
+.choose-tab view.active {
+  width: 190rpx;
+  background: #FF6600;
+  color: #ffffff;
+}
+.choose-tab > view:first-of-type {
+  border-top-left-radius: 10rpx;
+  border-bottom-left-radius: 10rpx;
+}
+.choose-tab > view:last-of-type {
+  border-top-right-radius: 10rpx;
+  border-bottom-right-radius: 10rpx;
+}
+.content {
+  padding: 24rpx 30rpx;
+}
+

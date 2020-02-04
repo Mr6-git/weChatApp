@@ -1,0 +1,19 @@
+<!--application/pages/bill/index.wxml-->
+<view class='container'>
+  <view class='header {{ platform == "android" ? "android" : "" }}'>
+    <image class='icon-back' src='/images/back.png' bindtap="goBack"></image>
+    <view>我的账单</view>
+  </view>
+
+  <view class="box flex">
+    <view>{{ fund.balance.value }}</view>
+    <text class="tips">剩余{{ fund.balance.name }}</text>
+  </view>
+
+  <view class='main'>
+    <view class="title">{{ fund.balance.name }}流水</view>
+
+    <no-data></no-data>
+  </view>
+
+</view>

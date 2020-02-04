@@ -1,0 +1,7 @@
+<!--components/scroll-load/index.wxml-->
+<scroll-view scroll-y="true" scroll-with-animation="{{hasAnimation}}" class="container" scroll-top="{{scrollTop}}" lower-threshold="30rpx" bindscrolltolower="toLower" bindscroll="toScroll" bindtouchstart="touchStart" bindtouchend="touchEnd">
+  <v-loading status="{{status}}" />
+  <view class="mh100">
+    <slot></slot>
+  </view>
+</scroll-view>

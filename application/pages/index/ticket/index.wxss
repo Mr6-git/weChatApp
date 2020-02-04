@@ -1,0 +1,108 @@
+/* application/pages/index/ticket/index.wxss */
+
+.container {
+  height: 100%;
+  width: 100%;
+  background: #f5f5f5;
+  overflow: scroll;
+}
+
+.header {
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 128rpx;
+  padding: 42rpx 0 0;
+  background: #fff;
+  color: #f60;
+  font-size: 38rpx;
+}
+
+.header.android {
+  height: 150rpx;
+  padding: 65rpx 0 0;
+}
+
+.header > view {
+  padding: 0 30rpx;
+}
+
+.main {
+  height: calc(100% - 128rpx);
+  width: 100%;
+  background: #f5f5f5;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+.main.android {
+  height: calc(100% - 150rpx);
+}
+
+.ticketList {
+  position: relative;
+  height: 356rpx;
+  width: 100%;
+  background: #fff;
+  border-bottom: 1px solid #FFF0F0F0;
+  padding: 40rpx 30rpx 38rpx 30rpx
+}
+
+.list-left {
+  width: 220rpx;
+  height: 280rpx;
+  border-radius: 10rpx;
+}
+
+.list-right {
+  width: 460rpx;
+  position: absolute;
+  top: 30rpx;
+  left: 270rpx;
+}
+
+.right-title {
+  font-size: 34rpx;
+  font-weight: bold;
+  margin-top: 10px;
+  line-height: 48rpx;
+  color: rgba(3, 3, 3, 1);
+}
+
+.right-time {
+  margin-top: 30rpx;
+  font-size: 24rpx;
+  font-weight: 400;
+  line-height: 34rpx;
+  color: rgba(155, 155, 155, 1);
+}
+
+.right-addr {
+  margin-top: 10rpx;
+  font-size: 24rpx;
+  font-weight: 400;
+  line-height: 34rpx;
+  color: rgba(155, 155, 155, 1);
+}
+
+.right-price {
+  margin-top: 50rpx;
+  font-size: 28rpx;
+  font-weight: bold;
+  line-height: 32rpx;
+  color: #f36;
+}
+
+.right-buy {
+  position: absolute;
+  right: 30rpx;
+  bottom: -5rpx;
+  width: 96rpx;
+  height: 48rpx;
+  background: linear-gradient(270deg, rgba(255, 102, 0, 1) 0%, rgba(252, 174, 109, 1) 100%);
+  box-shadow: 0rpx 4rpx 8rpx 0rpx rgba(254, 107, 5, 0.14);
+  border-radius: 32rpx;
+  text-align: center;
+  line-height: 48rpx;
+  color: #fff;
+}

@@ -1,0 +1,66 @@
+<view class='account'>
+  <image class='logo-img' src="/images/app-logo.png"></image>
+  <view class='welcome'>欢迎使用锦鲤赛事</view>
+
+  <form>
+    <view class='input-box'>
+      <input
+        class='my-input'
+        type='number'
+        value="{{ phone }}"
+        placeholder='请输入手机号码'
+        bindinput='bindPhone'
+        maxlength='11'
+      ></input>
+      <view class='operate-wrap'>
+        <image
+          wx:if="{{ phoneClose }}"
+          bindtap='clearInput'
+          data-key="phone"
+          class='close-img'
+          src="/images/login/close-small.png"
+        ></image>
+      </view>
+    </view>
+    <view class='input-box'>
+      <input
+        class='my-input'
+        type='password'
+        value='{{ pwd }}'
+        focus='{{ !canSee && change }}'
+        placeholder='请输入密码'
+        bindinput='bindPwd'
+        maxlength='8'
+      ></input>
+      <input
+        wx:if="{{ canSee }}"
+        class='showPwd my-input'
+        value='{{ pwd }}'
+        focus='{{ canSee }}'
+        placeholder='请输入密码'
+        bindinput='bindPwd'
+        maxlength='8'
+      ></input>
+      <view class='operate-wrap flex-left'>
+        <image bindtap='handleEye' wx:if="{{ !canSee && pwdClose }}" class='eye-img' src="/images/login/eye-open.png"></image>
+        <image bindtap='handleEye' wx:if="{{ canSee && pwdClose }}" class='eye-img' src="/images/login/eye-close.png"></image>
+        <image wx:if="{{ pwdClose }}" bindtap='clearInput' data-key="pwd" class='close-img' src="/images/login/close-small.png"></image>
+      </view>
+    </view>
+
+    <view class='tip'></view>
+    <view class='login-btn {{ phone && pwd ? "active" : "" }}' bindtap='login'>登录</view>
+  </form>
+
+  <view class='sub-tab flex-sb'>
+    <view bindtap='gotoCode'>
+      <text>验证码登录</text>
+      <image class='enter-img' src="/images/common/in.png"></image>
+    </view>
+    <view></view>
+    <!-- <view bindtap='gotoUpdatePwd'>忘记密码</view> -->
+  </view>
+  <!-- <view class='protocol grey'>登录代表您已同意
+    <text class='blue' bindtap='gotoPor'>《平台服务协议》</text>
+  </view> -->
+</view>

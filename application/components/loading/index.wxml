@@ -1,0 +1,6 @@
+<!--components/loading/index.wxml-->
+<view class="main-box">
+  <text wx:if="{{status == 0}}">下拉可以刷新</text>
+  <text wx:elif="{{status == 1}}">松开立即刷新</text>
+  <text wx:elif="{{status == 2}}">正在刷新数据</text>
+</view>

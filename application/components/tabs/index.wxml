@@ -1,0 +1,14 @@
+<!--components/tabs/index.wxml-->
+<view class="tabs">
+    <view
+        wx:for="{{ tabs }}"
+        wx:for-item="item"
+        wx:key=""
+        data-id="{{ item.id }}"
+        data-index="{{ item.index }}"
+        class='{{ item.id == active ? "active" : "" }}'
+        bindtap='handleTabClick'
+    >{{ item.name }}
+        <slot></slot>
+    </view>
+</view>

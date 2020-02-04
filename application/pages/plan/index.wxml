@@ -1,0 +1,10 @@
+<!--application/pages/plan/index.wxml-->
+<view class='container'>
+  <view class='header {{ platform == "android" ? "android" : "" }}'>
+    <image class='icon-back' src='/images/back.png' bindtap="goBack"></image>
+    <view>我的方案</view>
+  </view>
+
+  <no-data></no-data>
+
+</view>

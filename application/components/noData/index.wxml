@@ -1,0 +1,4 @@
+<view class="{{ wrap }}">
+  <image src="{{ img }}" class="noList-img"></image>
+  <view class="noList-text">{{ tips }}</view>
+</view>

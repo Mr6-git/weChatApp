@@ -1,0 +1,135 @@
+/* pages/index/race/index.wxss */
+.container{
+  height: 100%;
+  width: 100%;
+  background: #f5f5f5;
+  overflow: hidden;
+}
+.header {
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 128rpx;
+  padding: 42rpx 0 0;
+  background: #ffffff;
+  color: #FF6600;
+  font-size: 38rpx;
+}
+.header.android {
+  height: 150rpx;
+  padding: 65rpx 0 0;
+}
+.header > view {
+  padding: 0 30rpx;
+}
+.top {
+  padding: 40rpx 45rpx 30rpx;
+  background: #ffffff;
+}
+.avatar {
+  width: 112rpx;
+  height: 112rpx;
+  margin-right: 18rpx;
+  border-radius: 50%;
+}
+.name {
+  color: #4A4A4A;
+  font-size: 32rpx;
+}
+.phone {
+  margin-top: 4rpx;
+  color: #888C91;
+  font-size: 24rpx;
+}
+.info {
+  padding: 40rpx 0 0;
+  color: #3F454B;
+  font-size: 36rpx;
+}
+.info-item {
+  position: relative;
+  min-width: 138rpx;
+  margin-right: 20rpx;
+}
+.info-item:not(:last-of-type)::after {
+  content: '';
+  position: absolute;
+  pointer-events: none;
+  transform-origin: 0 0;
+  top: 0;
+  left: 0;
+  width: 200%;
+  height: 200%;
+  transform: scale(0.5);
+  border-right: 1px solid #d7d7d7;
+}
+.sub {
+  margin-bottom: 8rpx;
+  padding-left: 4rpx;
+  color: #666666;
+  font-size: 24rpx;
+}
+.main {
+  position: relative;
+  margin: 20rpx 0;
+  background: #ffffff;
+}
+.main::after {
+  content: '';
+  position: absolute;
+  pointer-events: none;
+  transform-origin: 0 0;
+  top: 0;
+  left: 0;
+  width: 200%;
+  height: 200%;
+  transform: scale(0.5);
+  border-top: 1px solid #d7d7d7;
+  border-bottom: 1px solid #d7d7d7;
+}
+.li-item {
+  height: 94rpx;
+  padding-left: 30rpx;
+  color: #191919;
+  font-size: 30rpx;
+}
+.li-icon {
+  width: 48rpx;
+  height: 48rpx;
+  margin-right: 20rpx;
+}
+.li-item > view {
+  position: relative;
+  width: calc(100% - 70rpx);
+  height: 100%;
+  padding-right: 30rpx;
+  line-height: 94rpx;
+}
+.li-item:not(:last-of-type) > view::after {
+  content: '';
+  position: absolute;
+  pointer-events: none;
+  transform-origin: 0 0;
+  top: 0;
+  left: 0;
+  width: 200%;
+  height: 200%;
+  transform: scale(0.5);
+  border-bottom: 1px solid #d7d7d7;
+}
+.right-img {
+  width: 24rpx;
+  height: 24rpx;
+}
+
+
+
+.flex-left {
+  display: flex;
+  align-items: center;
+}
+.flex-sb {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}

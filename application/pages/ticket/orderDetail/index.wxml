@@ -1,0 +1,136 @@
+<wxs src="./filter.wxs" module="filter" />
+<wxs src="../../../wxs/utils.wxs" module="utils" />
+<view class='container'>
+  <view class='header {{ platform == "android" ? "android" : "" }}'>
+    <image class='icon-back' src='/images/back.png' catchtap="goBack"></image>
+    <view>订单详情</view>
+  </view>
+  <scroll-view scroll-y='true' class='main {{ platform == "android" ? "android" : "" }}'>
+    <!-- 未正常出票界面 -->
+    <view wx:if="{{info.status != 2 && info.status != 3}}">
+      <view class="status {{info.status == 0?'orderColor': ''}}">
+        <view wx:if="{{info.status == 5}}">
+          <view class="status-type">已超时</view>
+          <view class="status-info">支付超时，已关闭交易</view>
+        </view>
+        <view wx:if="{{info.status == 4}}">
+          <view class="status-type">已取消</view>
+          <view class="status-info">取消订单，已关闭交易</view>
+        </view>
+        <view wx:if="{{info.status == 7}}">
+          <view class="status-type">出票失败</view>
+          <view class="status-info">库存异常，已出票失败</view>
+        </view>
+        <view wx:if="{{info.status == 0}}">
+          <view class="status-type">待付款 ￥{{utils.formatMoney(info.price/100)}}</view>
+          <view class="status-info">请尽快完成支付，还剩{{minutes}}分{{seconds}}秒</view>
+        </view>
+      </view>
+      <view class="top">
+        <view class="top-content">
+          <view class="left">
+            <view class="title">{{info.ticket_name}}</view>
+            <view class="time">{{info.start_time}}</view>
+            <view class="attr">{{info.city}} | {{info.location}}</view>
+          </view>
+          <view class="right">
+            <image class="ticketpic" src="{{info.cover_img}}"></image>
+            <view class="know" bindtap="openPopup">购票须知></view>
+          </view>
+        </view>
+      </view>
+      <view class="center">
+        <view class="num">{{info.number}}张</view>
+        <view class="give">{{info.gear_name}}{{info.price/100}}元 赠送{{info.give/100}}{{filter.filterFundsType(info.funds_type)}}</view>
+      </view>
+      <view wx:if="{{info.status == 0}}" class="pay">
+        <view class="pay-title">支付方式</view>
+        <view class="payway">
+          <image src="/images/ticket/wechat.png" class="zhifubao"></image>
+          <text class="pay-text">微信</text>
+          <image class="radio" src="/images/ticket/yes.png"></image>
+        </view>
+      </view>
+      <view class="orderDetail">
+        <view class="oDtext">订单号：{{info._id}}</view>
+        <view class="oDtext">创建时间：{{info.createTime}}</view>
+        <view class="copy" data-text="{{info._id}}" bindtap="copyOrderNum">复制</view>
+      </view>
+      <view wx:if="{{info.status == 0}}" class="buy-ticket">
+        <view class="cancer" bindtap="cancerOeder">取消订单</view>
+        <view class="paynow" bindtap="doIn">立即支付</view>
+      </view>
+      <view wx:if="{{popupFlag}}" class="popupBg"></view>
+      <view wx:if="{{popupFlag}}" class="popup">
+        <view class="popup-content">
+          <view class="popup-top">
+            <image class="close" src='/images/ticket/close.png' bindtap="closePopup"></image>
+            <view class="popup-title">购票须知</view>
+          </view>
+          <view class="text-content" style="overscroll">
+            <rich-text class="article" nodes="{{mustKnow}}"></rich-text>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 已出票和已领取 -->
+    <view class="success" wx:if="{{info.status == 2 || info.status == 3}}">
+      <view class="content">
+        <view class="success-top">
+          <view class="ticketName">{{info.ticket_name}}</view>
+          <view class="top-info">
+            <image class="data" src="/images/ticket/data.png"></image>
+            <text class="orange">{{info.ticket_name}}</text>
+          </view>
+          <view class="top-info">
+            <image class="data" src="/images/ticket/attr.png"></image>
+            <text class="gary">{{info.city}}   |   {{info.location}}</text>
+          </view>
+          <image class="sign" src="/images/ticket/yichupiao.png"></image>
+        </view>
+        <view class="code">
+          <image class="top-circleLeft" src="/images/ticket/circleLeft.png"></image>
+          <image class="top-circleRight" src="/images/ticket/circleRight.png"></image>
+          <view class="codeText">验证码：
+            <text wx:if="{{info.status == 2}}" class="codeNum">{{info.captcha}}</text>
+            <text wx:if="{{info.status == 3}}" class="codeNumed">{{info.captcha}}</text>
+          </view>
+          <!-- <image class="RQcode" src=""></image> -->
+          <text class="warn">在<text class="warn-orange">比赛场地向服务人员</text>出示上述内容，选定位置领取门票</text>
+        </view>
+        <view class="infoList">
+          <image class="list-circleLeft" src="/images/ticket/circleLeft.png"></image>
+          <image class="list-circleRight" src="/images/ticket/circleRight.png"></image>
+          <view class="list">
+            <view class="list-name">门票：</view>
+            <view class="list-info">{{info.grade_name}}{{info.price}}元</view>
+          </view>
+          <view class="list">
+            <view class="list-name">数量：</view>
+            <view class="list-info">{{info.number}}</view>
+          </view>
+          <view class="list">
+            <view class="list-name">赠送：</view>
+            <view class="list-info">{{info.formatGive}}{{filter.filterFundsType(info.funds_type)}}</view>
+          </view>
+          <view class="list">
+            <view class="list-name">订单金额：</view>
+            <view class="list-info">¥{{info.formatAmount}}</view>
+          </view>
+          <view class="list">
+            <view class="list-name">支付金额：</view>
+            <view class="list-info">¥{{info.formatAmount}}</view>
+          </view>
+        </view>
+        <view class="orderInfo">
+          <view class="orderNum">订单号：{{info._id}}</view>
+          <view class="buyTime">购买时间：{{info.createTime}}</view>
+          <view class="long"></view>
+          <image class="phone" src="/images/ticket/phone.png"></image>
+        </view>
+        <view class="success-bottom">该场次不支持退票</view>
+      </view>
+    </view>
+  </scroll-view>
+</view>

@@ -1,0 +1,6 @@
+{
+  "component": true,
+  "usingComponents": {
+    "scroll-load": "../../../components/scroll-load/index"
+  }
+}

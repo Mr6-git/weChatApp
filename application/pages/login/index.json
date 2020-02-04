@@ -1,0 +1,9 @@
+{
+  "component": true,
+  "disableScroll": true,
+  "navigationBarTitleText": "name",
+  "usingComponents": {
+    "phone": "./phone/index",
+    "account": "./account/index"
+  }
+}

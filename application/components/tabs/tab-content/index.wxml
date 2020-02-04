@@ -1,0 +1,4 @@
+<!--components/tab-content/index.wxml-->
+<view class="tab-content" style="transform: translate3d({{(index - activeIndex) * 100}}% , 0, 0);">
+    <slot></slot>
+</view>

@@ -1,0 +1,104 @@
+<!--application/pages/planDetail/index.wxml-->
+<view class="container">
+  <view class='header {{ platform == "android" ? "android" : "" }}'>
+    <image class='icon-back' src='/images/back.png' bindtap="goBack"></image>
+    <view>方案详情</view>
+  </view>
+
+  <view class='main-contain'>
+
+    <view class='top-header'>
+      <view class="title">{{ data.title }}</view>
+      <view class="time">{{ create_time_str }}</view>
+      <view class='personal flex-left'>
+        <image src='{{ data.expert.avatar }}'></image>
+        <view>
+          <view class="name">{{ data.expert.name }}</view>
+          <view class='flex-left'>
+            <view class='blue-box'>近{{ data.expert.lately_count }}中{{ data.expert.lately_hit_count }}</view>
+            <view class='red-box'>{{ data.expert.highest_red }}连红</view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <view class='middle flex-sb'>
+      <view>
+        <view class="mid-title">推荐买点</view>
+        <view class="sub-title" wx:if="{{ event.event_status < 2 && data.is_purchased == 0 }}">{{ data.sp_name }}</view>
+        <view class="sub-title" wx:else>{{ chooseOdd.pOdd.name }} {{ chooseOdd.cOdd.name }} @{{ chooseOdd.cOdd.odds }}</view>
+      </view>
+
+      <view class='orange' wx:if="{{ event.event_status < 2 || data.hit_status == 0 }}">
+        <view>
+          <text class='rate'>{{ data.rate }}</text>
+          <text class='rate-char'>%</text>
+        </view>
+        <view class='rate-text'>命中率</view>
+      </view>
+
+      <view class='circle flex red' wx:if="{{ event.event_status >= 2 && data.hit_status == 1 }}">红</view>
+      <view class='circle flex black' wx:if="{{ event.event_status >= 2 && data.hit_status == 2 }}">黑</view>
+      <view class='circle flex gone' wx:if="{{ event.event_status >= 2 && data.hit_status == 3 }}">走</view>
+    </view>
+
+    <view class='content'>
+
+      <view class='event'>
+        <view class='top flex-sb'>
+          <view class="flex-left">
+            <image class="league-icon" src='{{ event.game.icon }}'></image>
+            <text>{{ event._id }}</text>
+            <text class="time">{{ event.begin_time }}</text>
+          </view>
+          <view class='flex-left'>
+            <text class="bo">BO{{ event.bo }}</text>
+            <text wx:if="{{ event.league }}">{{ event.league.name }}</text>
+          </view>
+        </view>
+
+        <view class="event-main flex-left">
+          <view class='team flex'>
+            <image src='{{ event.home_team.icon }}'></image>
+            <view>{{ event.home_team.name }}</view>
+          </view>
+          <view class="mid-vs flex">
+            <view class="vs" wx:if="{{ event.event_status <= 1 }}">VS</view>
+            <view class="vs-status" wx:if="{{ event.event_status == 2 }}">进行中</view>
+            <view class="vs-status" wx:if="{{ event.event_status > 2 }}">结束</view>
+            <view class="vs-time">{{ event.begin_time_str }}</view>
+          </view>
+          <view class='team flex'>
+            <image src='{{ event.away_team.icon }}'></image>
+            <view>{{ event.away_team.name }}</view>
+          </view>
+        </view>
+      </view>
+
+      <view class='rec-title'>推荐理由</view>
+
+      <!-- <view class="no-pay" wx:if="{{ event.event_status < 2 && data.is_purchased == 0 && data.price != 0 }}">
+        <view class="tips">支付成功后可查看推荐内容</view>
+        <view class="sub-tips">以上数据仅供参考</view>
+      </view> -->
+
+      <view class="reason-cont">
+        {{ data.reason || '暂无' }}
+      </view>
+
+    </view>
+
+  </view>
+
+  <!-- <view class='bottom flex-left' wx:if="{{ event.event_status < 2 && data.is_purchased == 0 && data.price != 0 }}">
+    <view class='box-left flex-left'>
+      <text>{{ data.price }}{{ fund.balance.name }}</text>
+      <view class="orangeBtn" wx:if="{{ data.is_hit }}">不中全退</view>
+    </view>
+    <view class='box-right' bindtap="pay">立即支付</view>
+  </view> -->
+</view>
+
+
+
+

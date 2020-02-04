@@ -1,0 +1,45 @@
+<!--aviewviewlication/viewages/about/privacy/index.wxml-->
+<view class='container'>
+  <view class='header {{ viewlatform == "android" ? "android" : "" }}'>
+    <image class='icon-back' src='/images/back.png' bindtap="goBack"></image>
+    <view>隐私政策</view>
+  </view>
+
+  <view class='main'>
+    
+    <view class="p">本应用（以下简称应用）的隐私是保护用户隐私的承诺。该隐私可用于您与APP页面之间的交互行为以及APP中的在线服务。声明是收集，使用和保护用户信息的政策，所以请仔细阅读这些声明。</view>
+    <view>[本应用的隐私政策]</view>
+    <view class="h3">一、用户的个人信息</view>
+    <view>我们将通过您的操作请求收集非个人信息，例如：您的登录时间，注销时间以及为您提供的APP服务器。我们会通过我们之前收集的信息来统计APP的游客和流量，这样我们可以提高我们的APP项目和服务水平。</view>
+    <view class="h3">二、个人资料</view>
+    <view>当您注册或登录我们的APP时，我们将通过注册表格和订单收集一些信息，所有这些过程都在您的同意和确认之下。这些信息包括以下细节：</view>
+    <view class="sub">个人识别日期：您的电话号码，电子邮件地址等。</view>
+    <view class="sub">未经您的同意，APP不会将您的信息用于任何其他目标。</view>
+    <view class="h3">三、信息安全</view>
+    <view>APP将严格管理和保护您的信息，并使用技术防止您的个人信息丢失或盗用。</view>
+    <view class="h3">四、用户的权利</view>
+    <view>您有权获得您的个人信息：</view>
+    <view class="sub">随时检查并阅读您的信息。</view>
+    <view class="sub">随时补充并更正您的信息。</view>
+    <view class="sub">停止计算机处理并随时删除它。</view>
+    <view class="h3">五、限制原则</view>
+    <view>在下列任何一种情况下，APP将使用您的信息用于其他提案：</view>
+    <view class="sub">已经在电子邮件写作中获得了您的同意。</view>
+    <view class="sub">为了防止您的生命和财产危险。</view>
+    <view class="sub">避免对其他人造成重大危害。</view>
+    <view class="sub">为了促进公众利益，并不损害您的个人权利。</view>
+    <view class="h3">六、个人资料的披露</view>
+    <view>当地方政府需要APP披露用户的个人资料时，我们会根据相关法律法规及国家标准进行，以下情形中，我们可能会共享、转让、公开披露个人信息无需事先征得个人信息主体的授权同意：</view>
+    <view class="sub">1）与国家安全、国防安全直接相关的；</view>
+    <view class="sub">2）与公共安全、公共卫生、重大公共利益直接相关的；</view>
+    <view class="sub">3）与犯罪侦查、起诉、审判和判决执行等直接相关的；</view>
+    <view class="sub">4）出于维护个人信息主体或其他个人的生命、财产等重大合法权益但又很难得到本人同意的；</view>
+    <view class="sub">5）个人信息主体自行向社会公众公开的个人信息；</view>
+    <view class="sub">6）从合法公开披露的信息中收集个人信息的，如合法的新闻报道、政府信息公开等渠道。</view>
+
+    <view class="h3">七、电子邮件地址</view>
+    <view>未经您的同意，APP将不会在任何情况下透露您的地址。如果您忘记了密码，您的电子邮件地址将仅用于区分您的身份并恢复您的APP数据。如果APP有任何更新，我们会为您发送一封电子邮件。除了这些条件之外，任何电子邮件都将根据您的同意。本应用保留最终解释此条款的权利。</view>
+
+  </view>
+
+</view>

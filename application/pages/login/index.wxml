@@ -1,0 +1,20 @@
+<!--pages/login/index.wxml-->
+<view class='login'>
+  <image
+    class='close-img'
+    src="/images/login/icon-close.png"
+    bindtap='goBack'
+  ></image>
+  <phone
+    wx:if="{{ type == 'phone' }}"
+    class="full-height"
+    bind:setUserInfo="setUserInfo"
+    bind:setLoginType="setLoginType"
+  />
+  <account
+    wx:if="{{ type == 'account' }}"
+    class="full-height"
+    bind:setUserInfo="setUserInfo"
+    bind:setLoginType="setLoginType"
+  />
+</view>

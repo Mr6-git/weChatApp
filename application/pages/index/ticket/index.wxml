@@ -1,0 +1,20 @@
+<!--application/pages/index/ticket/index.wxml-->
+<view class="container">
+  <view class='header {{ platform == "android" ? "android" : "" }}'>
+    <view>门票</view>
+  </view>
+  <view class='main {{ platform == "android" ? "android" : "" }}'>
+    <scroll-load bindrefresh="refresh" bindloadmore="loadmore">
+      <view wx:for="{{ listData }}" wx:for-item="item" data-id="{{item._id}}" wx:key="item._id" class="ticketList" bindtap="gotoDetail">
+        <image class="list-left" src="{{item.cover_img}}"></image>
+        <view class="list-right">
+          <view class="right-title">{{item.ticket_name}}</view>
+          <view class="right-time">{{item.start_time}}</view>
+          <view class="right-addr">{{item.city}} | {{item.location}}</view>
+          <view class="right-price">{{item.min_price/100}}-{{item.max_price/100}}元</view>
+          <view class="right-buy">购票</view>
+        </view>
+      </view>
+    </scroll-load>
+  </view>
+</view>

@@ -1,0 +1,9 @@
+/* pages/index/expert/content/index.wxss */
+.container{
+  height: 100%;
+  width: 100%;
+  padding: 24rpx 30rpx 0;
+  background: #f5f5f5;
+  box-sizing: border-box;
+  overflow: hidden;
+}

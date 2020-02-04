@@ -1,0 +1,24 @@
+<!--pages/index/expert/index.wxml-->
+<view class="container">
+  <view class='header {{ platform == "android" ? "android" : "" }}'>
+    <!-- <image class='icon-back' src='/images/back-white.png'></image> -->
+    <view>{{ nav[0].title }}</view>
+  </view>
+  <scroll-view style='width: 100%; height: 35px' scroll-x='true'>
+    <view class='menu-tab'>
+      <view
+        wx:for="{{ menu }}"
+        wx:for-item="item"
+        wx:key="item._id"
+        data-id="{{ item._id }}"
+        bindtap="handleMenu"
+        class='{{ active == item._id ? "active" : "" }}'
+      >{{ item.name }}</view>
+    </view>
+  </scroll-view>
+
+  <view class='main-contain {{ active != "" ? "padding" : "" }}'>
+    <rec wx:if="{{ active == '' }}"></rec>
+    <content wx:if="{{ active != '' }}" gameId="{{ active }}"></content>
+  </view>
+</view>

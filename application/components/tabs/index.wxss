@@ -1,0 +1,36 @@
+/* components/tabs/index.wxss */
+.tabs {
+  display: flex;
+  font-size: 30rpx;
+  align-items:center;
+  justify-content: center;
+  color: #7F7F7F;
+  height: 80rpx;
+  position: relative;
+  z-index:1;
+}
+.tabs::after{
+  content: ' ';
+  position: absolute;
+  pointer-events: none;
+  transform-origin: 0 0;
+  top: 0;
+  left: 0;
+  width: 200%;
+  height: 200%;
+  transform: scaleY(0.5);
+  border-bottom: 1px solid #D7D7D7;
+}
+
+.tabs > view {
+  height: 48rpx;
+  line-height: 48rpx;
+  padding: 0 32rpx;
+  border-radius: 24rpx;
+  margin: 0 28rpx;
+}
+
+.tabs > view.active{
+  background:#FF6600;
+  color: #fff;
+}

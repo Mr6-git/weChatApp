@@ -1,0 +1,71 @@
+/* application/pages/about/privacy/index.wxss */
+.container{
+  height: 100%;
+  width: 100%;
+  background: #ffffff;
+  color: #333333;
+  font-size: 28rpx;
+  overflow: hidden;
+}
+.header {
+  position: relative;
+  height: 128rpx;
+  padding: 56rpx 0 0;
+  margin: 0 0 20rpx;
+  background: #ffffff;
+  color: #000000;
+  font-size: 37rpx;
+  text-align: center;
+}
+.header.android {
+  height: 150rpx;
+  padding: 74rpx 0 0;
+}
+.header::after {
+  content: '';
+  position: absolute;
+  pointer-events: none;
+  transform-origin: 0 0;
+  top: 0;
+  left: 0;
+  width: 200%;
+  height: 200%;
+  transform: scale(0.5);
+  border-bottom: 1px solid #d7d7d7;
+}
+.icon-back {
+  position: absolute;
+  left: 20rpx;
+  bottom: 25rpx;
+  width: 35rpx;
+  height: 35rpx;
+}
+.main {
+  height: calc(100% - 128rpx);
+  padding: 0 30rpx 50rpx;
+  color: #666666;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+.android .main {
+  height: calc(100% - 150rpx);
+}
+.h3 {
+  margin: 60rpx 0 10rpx;
+  color: #333333;
+  font-size: 34rpx;
+}
+.main > view {
+  margin: 0;
+  padding: 20rpx 0 0;
+  text-indent: 60rpx;
+  line-height: 42rpx;
+  font-size: 30rpx;
+}
+.main > view.sub {
+  padding: 0rpx 0 0;
+}
+.i {
+  margin-right: 6rpx;
+  font-style: normal;
+}

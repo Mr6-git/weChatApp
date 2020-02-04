@@ -1,0 +1,22 @@
+<!--pages/index/expert/content/index.wxml-->
+<scroll-load bindrefresh="refresh" bindloadmore="loadmore">
+
+  <view class='container'>
+    <planItem
+      wx:if="{{ data.length }}"
+      wx:for="{{ data }}"
+      wx:for-item="item"
+      wx:key="item._id"
+      data-id="{{ item._id }}"
+      bindtap="gotoDetail"
+      data="{{ item }}"
+    ></planItem>
+    <view class="no-data" wx:if="{{ !data.length }}">
+      <no-data></no-data>
+    </view>
+
+  </view>
+  
+</scroll-load>
+
+

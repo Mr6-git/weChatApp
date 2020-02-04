@@ -1,0 +1,88 @@
+<wxs src="./filter.wxs" module="filter" />
+<view class='container'>
+  <view class='header {{ platform == "android" ? "android" : "" }}'>
+    <image class='icon-back' src='/images/back.png' bindtap="goBack"></image>
+    <view>门票详情</view>
+  </view>
+  <view class='main {{ platform == "android" ? "android" : "" }}'>
+    <scroll-view scroll-y='true'>
+      <view class="detail-top">
+        <view class="top-bg" style="background-image: url('{{ticketInfo.cover_img}}')"></view>
+        <view class="top-left">
+          <image class='ticket-pic' src='{{ticketInfo.cover_img}}' bindtap="goBack"></image>
+        </view>
+        <view class="top-right">
+          <view class="t-r-title">{{ticketInfo.ticket_name}}</view>
+          <view class="t-r-price">{{ticketInfo.min_price/100}}-{{ticketInfo.max_price/100}}元</view>
+        </view>
+      </view>
+      <view class="content">
+        <view class="c-top">
+          <view class="c-t-time">{{ticketInfo.start_time}}</view>
+          <view class="c-t-timelong">{{ticketInfo.desc}}</view>
+        </view>
+        <view class="c-top">
+          <view class="c-t-time">{{ticketInfo.location}}</view>
+          <view class="c-t-timelong">{{ticketInfo.address}}</view>
+          <view class="c-t-setpic" bindtap="openMap">
+            <image class="mappic" src='/images/ticket/dizhi.png'></image>
+          </view>
+        </view>
+      </view>
+      <view class="info">
+        <view class="info-tab">
+          <view wx:for="{{ tab }}" wx:for-item="item" data-id="{{item.key}}" wx:key="item.key" class='tab {{ active == item.key ? "active" : "" }}' bindtap="activeTab">
+            {{item.value}}
+            <view wx:if="{{active == item.key}}" class="tab-bottom"></view>
+          </view>
+        </view>
+        <view class="info-content" wx:if="{{active == 0}}">
+          <rich-text class="article" nodes="{{ticketInfo.introduction}}"></rich-text>
+        </view>
+        <view class="info-content" wx:if="{{active == 1}}">
+          <rich-text class="article" nodes="{{mustKnow}}"></rich-text>
+        </view>
+      </view>
+      <view class="bot">
+        <view class="btn" bindtap="buyNow">立即选购</view>
+      </view>
+      <view wx:if="{{buyFlag}}" class="popupBg"></view>
+      <view wx:if="{{buyFlag}}" class="buy">
+        <view class="buy-content">
+          <!-- <view class="close"></view> -->
+          <image class="close" src='/images/ticket/close.png' bindtap="closeBuy"></image>
+          <view class="session">
+            <view class="session-title">场次</view>
+            <view class='{{sessionCheckId == item.scene_id?"session-choose":"session-list"}}' wx:for="{{sessionInfo}}" wx:for-item="item" data-item="{{item}}" wx:key="item.scene_id" bindtap="chooseSession">
+              {{item.time}}
+            </view>
+          </view>
+          <view class="ticket">
+            <view class="ticket-title">票档</view>
+            <view class="ticket-list" class='{{ticketCheckId == item.gear_id?"ticket-choose":"ticket-list"}}' wx:for="{{ticketList}}" wx:for-item="item" data-item="{{item}}" wx:key="item.gear_id" bindtap="chooseTicket">
+              <text>{{item.gear_name}}{{item.price/100}}元\n赠送{{item.give/100}}{{filter.filterFundsType(item.funds_type)}}</text>
+            </view>
+          </view>
+          <view class="number">
+            <view class="number-title">数量</view>
+            <view class="number-btn">
+              <image class="num-add" src='/images/ticket/jian.png' bindtap="minusNum"></image>
+              <view class="num">{{num}}</view>
+              <image class="num-minus" src='/images/ticket/add.png' bindtap="addNum"></image>
+            </view>
+          </view>
+          <view class="agreement">
+            <image wx:if="{{agreeFlag == 0}}" class="agree" src='/images/ticket/unagree.png' bindtap="agree"></image>
+            <image wx:if="{{agreeFlag == 1}}" class="agree" src='/images/ticket/agree.png' bindtap="unagree"></image>
+            <text>同意<text class="agree-text" bindtap="toProtocol">《锦鲤赛事订票服务协议》</text></text>
+            <!-- <text>同意<web-view class="agree-text" src="https://www.baidu.com/">《锦鲤赛事订票服务协议》</web-view></text> -->
+          </view>
+        </view>
+        <view class="buy-ticket">
+          <view class="money">￥{{totalMoney}}</view>
+          <view class='{{num > 0 && agreeFlag == 1 ? "okIn" : "doIn"}}' bindtap="doIn">确定</view>
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+</view>

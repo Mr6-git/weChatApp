@@ -1,0 +1,33 @@
+<!--application/pages/account/index.wxml-->
+<view class='container'>
+  <view class='header {{ platform == "android" ? "android" : "" }}'>
+    <image class='icon-back' src='/images/back.png' bindtap="goBack"></image>
+    <view>账户与安全</view>
+  </view>
+
+  <view class='main'>
+    <view class='li-item flex-sb ava'>
+      <text>头像</text>
+      <image class='avatar' src='{{ data.avatar }}'></image>
+    </view>
+    <view class='li-item flex-sb'>
+      <text>昵称</text>
+      <text class="val">{{ data.nickname }}</text>
+    </view>
+    <view class='li-item flex-sb'>
+      <text>手机号码</text>
+      <text class="val">{{ data.mobile }}</text>
+    </view>
+    <view class='li-item flex-sb'>
+      <text>性别</text>
+      <text class="val" wx:if="{{ data.sex == 0 }}">未知</text>
+      <text class="val" wx:if="{{ data.sex == 1 }}">男</text>
+      <text class="val" wx:if="{{ data.sex == 2 }}">女</text>
+    </view>
+  </view>
+
+  <view class='logout-btn' bindtap="logout">退出登录</view>
+</view>
+
+
+

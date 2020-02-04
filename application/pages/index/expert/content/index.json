@@ -1,0 +1,8 @@
+{
+  "component": true,
+  "usingComponents": {
+    "planItem": "../planItem/index",
+    "no-data": "../../../../components/noData/index",
+    "scroll-load": "../../../../components/scroll-load/index"
+  }
+}

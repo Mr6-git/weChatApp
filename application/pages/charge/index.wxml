@@ -1,0 +1,54 @@
+<!--application/pages/charge/index.wxml-->
+<wxs src="../../wxs/utils.wxs" module="utils" />
+<view class="container">
+  <view class='header {{ platform == "android" ? "android" : "" }}'>
+    <image class='icon-back' src='/images/back.png' bindtap="goBack"></image>
+    <view>鱼苗充值</view>
+  </view>
+
+  <view class='main'>
+    <view class='list flex-wrap'>
+      <view
+        wx:for="{{ data }}"
+        wx:for-item="item"
+        wx:key="item._id"
+        wx:for-index="index"
+        data-id="{{ index }}"
+        bindtap="choose"
+        class='list-item flex {{ index == active ? "active" : "" }}'
+      >
+        <view>{{ utils.formatMoney(item.price / 100, 0) }}鱼苗</view>
+        <view class="sub">{{ item.goods_name }}</view>
+      </view>
+    </view>
+
+    <view class='citem flex-sb'>
+      <view>选择数量</view>
+      <view class='flex-left'>
+        <text bindtap="minus">-</text>
+        <view class="count">{{ count }}</view>
+        <text bindtap="add">+</text>
+      </view>
+    </view>
+
+    <view class='citem flex-sb'>
+      <view>合计支付</view>
+      <view class='total'>
+        <text class="char">￥</text>
+        <text>{{ utils.formatMoney(total) }}</text>
+      </view>
+    </view>
+  </view>
+  <view class='charge-btn {{ active != null ? "active" : "" }}' bindtap="handlePay">立即充值</view>
+
+  <view class="cover" wx:if="{{ showCover }}">
+    <view class="coverContent">
+      <button
+        open-type="launchApp"
+        app-parameter="{{ status }}"
+        binderror="launchAppError"
+        class="backBtn"
+      >返回App</button>
+    </view>
+  </view>
+</view>

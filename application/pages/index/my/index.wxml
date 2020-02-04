@@ -1,0 +1,45 @@
+<!--pages/index/race/index.wxml-->
+<view class="container">
+  <view class='header {{ platform == "android" ? "android" : "" }}'>
+    <!-- <image class='icon-back' src='/images/back-white.png'></image> -->
+    <view>我的</view>
+  </view>
+
+  <view class='top'>
+    <view class='flex-left' bindtap="gotoPersonal">
+      <image class="avatar" src='{{ data.avatar }}'></image>
+      <view>
+        <view class="name">{{ data.nickname }}</view>
+        <view class="phone">{{ data.mobile }}</view>
+      </view>
+    </view>
+
+    <view class='info flex-left'>
+      <view class="info-item">
+        <view class="sub">等级</view>
+        <view>{{ data.level_info.level }}</view>
+      </view>
+      <!-- <view class="info-item">
+        <view class="sub">鱼苗</view>
+        <view>0.00</view>
+      </view> -->
+    </view>
+  </view>
+
+  <view class='main'>
+    <view
+      wx:for="{{ menu }}"
+      wx:for-item="item"
+      wx:key="item.id"
+      data-key="{{ item.key }}"
+      bindtap="gotoUrl"
+      class='li-item flex-left'
+    >
+      <image class="li-icon" src='{{ item.icon }}'></image>
+      <view class="flex-sb">
+        <text>{{ item.name }}</text>
+        <image class="right-img" src="/images/common/right.png"></image>
+      </view>
+    </view>
+  </view>
+</view>

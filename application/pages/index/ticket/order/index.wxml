@@ -1,0 +1,48 @@
+<view class='container'>
+  <view class='header {{ platform == "android" ? "android" : "" }}'>
+    <image class='icon-back' src='/images/back.png' bindtap="goBack"></image>
+    <view>确认订单</view>
+  </view>
+  <view class="top">
+    <view class="top-content">
+      <view class="left">
+        <view class="title">{{info.ticketDetail.ticket_name}}</view>
+        <view class="time">{{info.ticketDetail.start_time}}</view>
+        <view class="attr">{{info.ticketDetail.city}} | {{info.ticketDetail.location}}</view>
+      </view>
+      <view class="right">
+        <image class="ticketpic" src="{{info.ticketDetail.cover_img}}"></image>
+        <view class="know" bindtap="openPopup">购票须知></view>
+      </view>
+    </view>
+  </view>
+  <view class="center">
+    <view class="num">{{info.num}}张</view>
+    <view class="give">{{info.ticketCheckInfo.gear_name}}{{info.ticketCheckInfo.price/100}}元  赠送{{info.ticketCheckInfo.give/100}}鱼苗</view>
+  </view>
+  <view class="pay">
+    <view class="pay-title">支付方式</view>
+    <view class="payway">
+      <image src="/images/ticket/wechat.png" class="zhifubao"></image>
+      <text class="pay-text">微信</text>
+      <image class="radio" src="/images/ticket/yes.png"></image>
+    </view>
+  </view>
+  <view class="buy-ticket">
+    <view class="money">￥{{info.totalMoney}}</view>
+    <view class='doIn' bindtap="doIn">立即支付</view>
+  </view>
+  <view wx:if="{{popupFlag}}" class="popupBg"></view>
+  <view wx:if="{{popupFlag}}" class="popup">
+    <view class="popup-content">
+      <image class="close" src='/images/ticket/close.png' bindtap="closePopup"></image>
+      <view class="popup-title">购票须知</view>
+      <view class="text-content">
+        <view class="text">1.改场次不支持退票</view>
+        <view class="text">2.获得赠送的鱼苗，即时到账</view>
+        <view class="text">3.比赛开始当天，凭门票二维码或验证码，到现场服务站台选定位置领取门票</view>
+        <view class="text">4.门票过期未领取，作废处理</view>
+      </view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,13 @@
+/* components/loading/index.wxss */
+.main-box{
+  height: 100rpx;
+  display: flex;
+  justify-content: center;
+  color: #666;
+  font-size: 28rpx;
+}
+
+.main-box text{
+  align-self: flex-end;
+  padding: 0 0 15rpx;
+}

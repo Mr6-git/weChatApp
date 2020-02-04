@@ -1,0 +1,363 @@
+/* application/pages/planDetail/index.wxss */
+.container{
+  height: 100%;
+  width: 100%;
+  background: #f5f5f5;
+  color: #333333;
+  font-size: 28rpx;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+.header {
+  position: relative;
+  height: 128rpx;
+  padding: 56rpx 0 0;
+  background: #ffffff;
+  color: #000000;
+  font-size: 37rpx;
+  text-align: center;
+}
+.header.android {
+  height: 150rpx;
+  padding: 74rpx 0 0;
+}
+.icon-back {
+  position: absolute;
+  left: 20rpx;
+  bottom: 25rpx;
+  width: 35rpx;
+  height: 35rpx;
+}
+.main-contain {
+  height: calc(100% - 128rpx);
+  background: #f5f5f5;
+}
+.android .main-contain {
+  height: calc(100% - 150rpx);
+}
+.top-header {
+  position: relative;
+  padding: 0 28rpx 28rpx;
+  background: #FFFFFF;
+  color: #333333;
+}
+.top-header::after {
+  content: '';
+  position: absolute;
+  pointer-events: none;
+  transform-origin: 0 0;
+  top: 0;
+  left: 0;
+  width: 200%;
+  height: 200%;
+  transform: scale(0.5);
+  border-bottom: 1rpx solid #d7d7d7;
+}
+.title {
+  padding: 20rpx 0 10rpx;
+  font-size: 30rpx;
+}
+.time {
+  padding-bottom: 30rpx;
+  color: #999999;
+  font-size: 20rpx;
+}
+.person {
+  padding-bottom: 10rpx;
+  color: #333333;
+  font-size: 26rpx;
+}
+.personal > image {
+  width: 80rpx;
+  height: 80rpx;
+  margin-right: 24rpx;
+  border-radius: 50%;
+}
+.name {
+  margin-bottom: 14rpx;
+}
+.blue-box {
+  position: relative;
+  min-width: 96rpx;
+  height: 32rpx;
+  margin-right: 10rpx;
+  background: #EFF9FF;
+  color: #00A2FF;
+  text-align: center;
+  line-height: 32rpx;
+  font-size: 20rpx;
+}
+.blue-box::after {
+  content: '';
+  position: absolute;
+  pointer-events: none;
+  transform-origin: 0 0;
+  top: 0;
+  left: 0;
+  width: 200%;
+  height: 200%;
+  transform: scale(0.5);
+  border-radius: 2rpx;
+  border: 1rpx solid #00A2FF;
+}
+.red-box {
+  position: relative;
+  min-width: 80rpx;
+  height: 32rpx;
+  background: #FFF0EF;
+  color: #FF1300;
+  text-align: center;
+  line-height: 32rpx;
+  font-size: 20rpx;
+}
+.red-box::after {
+  content: '';
+  position: absolute;
+  pointer-events: none;
+  transform-origin: 0 0;
+  top: 0;
+  left: 0;
+  width: 200%;
+  height: 200%;
+  transform: scale(0.5);
+  border-radius: 2rpx;
+  border: 1rpx solid #FF1300;
+}
+.rate {
+  font-size: 52rpx;
+}
+.rate-char {
+  font-size: 20rpx;
+}
+.rate-text {
+  margin-top: -4rpx;
+  font-size: 18rpx;
+  text-align: center;
+}
+.circle {
+  width: 52rpx;
+  height: 52rpx;
+  color: #FFFFFF;
+  border-radius: 50%;
+  font-size: 26rpx;
+}
+.circle.red {
+  background: #ED5254;
+}
+.circle.black {
+  background: #333333;
+}
+.circle.gone {
+  background: #B2B2B2;
+}
+.middle {
+  padding: 30rpx 30rpx 20rpx;
+  background: #ffffff;
+}
+.mid-title {
+  margin-bottom: 10rpx;
+  color: #333333;
+  font-size: 26rpx;
+}
+.sub-title {
+  color: #444444;
+  font-size: 24rpx;
+}
+.event {
+  width: 690rpx;
+  margin: 18rpx auto 36rpx;
+  background: #ffffff;
+  border-radius: 10rpx;
+}
+.top {
+  position: relative;
+  height: 60rpx;
+  padding: 0 18rpx;
+  color: #4A4A4A;
+  font-size: 22rpx;
+}
+.top::after {
+  content: '';
+  position: absolute;
+  pointer-events: none;
+  transform-origin: 0 0;
+  top: 0;
+  left: 0;
+  width: 200%;
+  height: 200%;
+  transform: scale(0.5);
+  border-bottom: 1rpx solid #d7d7d7;
+}
+.league-icon {
+  width: 32rpx;
+  height: 32rpx;
+  margin-right: 14rpx;
+}
+.top .time {
+  padding: 0;
+  margin: 0 0 0 14rpx;
+}
+.bo {
+  color: #8B572A;
+  margin-right: 14rpx;
+}
+.event-main {
+  height: 160rpx;
+}
+.team {
+  flex-direction: column;
+  flex-basis: 38%;
+  color: #000000;
+  font-size: 24rpx;
+}
+.mid-vs {
+  flex-direction: column;
+  flex-basis: 24%;
+  color: #9B9B9B;
+  font-size: 22rpx;
+}
+.team > image {
+  width: 80rpx;
+  height: 80rpx;
+}
+.vs {
+  color: #333333;
+  font-size: 40rpx;
+}
+.vs-status {
+  flex: none;
+  position: relative;
+  height: 40rpx;
+  width: 120rpx;
+  margin: 0 0 8rpx;
+  padding: 0 16rpx;
+  color: #6E6E6E;
+  font-size: 22rpx;
+  text-align: center;
+  line-height: 40rpx;
+}
+.vs-status::after {
+  content: '';
+  position: absolute;
+  pointer-events: none;
+  transform-origin: 0 0;
+  top: 0;
+  left: 0;
+  width: 200%;
+  height: 200%;
+  border-radius: 50rpx;
+  transform: scale(0.5);
+  border: 1rpx solid #999999;
+}
+.vs-status.active {
+  color: #FF9900;
+}
+.vs-status.active::after {
+  content: '';
+  position: absolute;
+  pointer-events: none;
+  transform-origin: 0 0;
+  top: 0;
+  left: 0;
+  width: 200%;
+  height: 200%;
+  border-radius: 50rpx;
+  transform: scale(0.5);
+  border: 1rpx solid #FF9900;
+}
+.vs-time {
+  margin-bottom: -20rpx;
+  color: #9B9B9B;
+  font-size: 22rpx;
+  text-align: center;
+}
+.rec-title {
+  padding: 0 32rpx;
+  color: #333333;
+  font-size: 26rpx;
+}
+.no-pay {
+  padding: 110rpx 30rpx 0;
+  text-align: center;
+}
+.reason-cont {
+  padding: 20rpx 30rpx;
+}
+.tips {
+  color: #333333;
+  font-size: 28rpx;
+}
+.sub-tips {
+  padding-top: 60rpx;
+  color: #999999;
+  font-size: 24rpx;
+}
+.bottom {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 104rpx;
+  background: #ffffff;
+  line-height: 104rpx;
+}
+.box-left {
+  width: calc(100% - 250rpx);
+  height: 100%;
+  padding: 30rpx;
+}
+.box-right {
+  width: 250rpx;
+  background: #FF6600;
+  color: #ffffff;
+  text-align: center;
+  font-size: 30rpx;
+}
+.orangeBtn {
+  position: relative;
+  min-width: 104rpx;
+  height: 36rpx;
+  margin-left: 30rpx;
+  background: #FFF4EC;
+  color: #FF6600;
+  text-align: center;
+  line-height: 36rpx;
+  font-size: 20rpx;
+}
+.orangeBtn::after {
+  content: '';
+  position: absolute;
+  pointer-events: none;
+  transform-origin: 0 0;
+  top: 0;
+  left: 0;
+  width: 200%;
+  height: 200%;
+  transform: scale(0.5);
+  border-radius: px2rem(1px);
+  border: 1px solid #FF6600;
+}
+.reason {
+  color: #666666;
+  font-size: 26rpx;
+}
+
+
+
+.orange {
+  color: #FF6600;
+}
+.flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.flex-left {
+  display: flex;
+  align-items: center;
+}
+.flex-sb {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}

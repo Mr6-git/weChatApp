@@ -1,0 +1,60 @@
+
+<view class='account'>
+
+  <view wx:if="{{ step == 1 }}">
+    <image class='logo-img' src="/images/app-logo.png"></image>
+    <view class='welcome'>欢迎使用锦鲤赛事</view>
+
+    <form>
+      <view class='get-number-box'>
+        <input
+          class='my-input'
+          type='number'
+          placeholder='请输入手机号码'
+          bindinput='bindPhone'
+          value="{{ phone }}"
+          maxlength='11'
+        ></input>
+        <view class='operate-box flex-left'>
+          <image
+            bindtap='clearInput'
+            wx:if='{{ phoneClose }}'
+            class='close-img'
+            src="/images/login/close-small.png"
+          ></image>
+          <!-- <button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">自动获取</button> -->
+        </view>
+      </view>
+      <view class='tip'>支持未注册的手机号快捷注册并登录</view>
+      <view class='login-btn {{ isPhone ? "active" : "" }}' bindtap='getVCode'>获取验证码</view>
+    </form>
+  </view>
+
+  <view class='step-2' wx:if="{{ step == 2 }}">
+    <view class='code-tip'>请输入验证码</view>
+    <view class='code-sub-tip'>验证码已发送至 {{ phone }}</view>
+    <input
+      class='real-input'
+      type='number'
+      maxlength='6'
+      focus='{{ canKeyBoard }}'
+      bindinput='bindCode'
+    ></input>
+    <view class='input-wrap flex-sb' bindtap='callKeyBoard'>
+      <view
+        class='code-input'
+        wx:for="{{ codeArr }}"
+        wx:for-item="item"
+        wx:for-index="index"
+        wx:key="index"
+      >{{ item }}</view>
+    </view>
+    <view class='time-tip' wx:if="{{ !canCode }}">{{ count }}秒后重新发送验证码</view>
+    <view class='login-btn {{ isFull ? "active" : "" }}' bindtap='login'>登录</view>
+  </view>
+
+  <view class='sub-tab'>
+    <text bindtap='gotoAccount'>密码登录</text><image class='enter-img' src="/images/common/in.png"></image>
+  </view>
+  <!-- <view class='protocol grey'>登录代表您已同意<text class='blue' bindtap='gotoPor'>《平台服务协议》</text></view> -->
+</view>

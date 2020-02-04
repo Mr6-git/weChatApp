@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "name",
+  "disableScroll": true,
+  "usingComponents": {
+    "expert": "./expert/index",
+    "ticket": "./ticket/index",
+    "my": "./my/index"
+  }
+}

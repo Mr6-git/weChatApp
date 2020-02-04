@@ -1,0 +1,133 @@
+function formatDate(datetime, format = 'YYYY-MM-DD HH:mm') {
+  if (datetime == '' || datetime == undefined || isNaN(datetime)) return '';
+  if (typeof(datetime) == 'string') {
+    var reg = getRegExp('\-', 'g')
+    datetime = datetime.replace(reg, '/');
+    datetime = new Date(datetime);
+  } else if (typeof(datetime) == 'number') {
+    datetime = getDate(datetime * 1000);
+  }
+
+  var week = ['日', '一', '二', '三', '四', '五', '六'];
+  var fmtReg = getRegExp('YYYY|YY|MM|DD|HH|hh|mm|SS|ss|week', 'g');
+  return format.replace(fmtReg, function(key) {
+    switch (key) {
+      case 'YYYY':
+        return datetime.getFullYear();
+      case 'YY':
+        {
+          var str = datetime.getFullYear() + '';
+          return str.slice(2);
+        }
+      case 'MM':
+        return datetime.getMonth() + 1 < 10 ? '0' + (datetime.getMonth() + 1) : datetime.getMonth() + 1;
+      case 'DD':
+        return datetime.getDate() < 10 ? '0' + datetime.getDate() : datetime.getDate();
+      case 'HH':
+      case 'hh':
+        return datetime.getHours() < 10 ? '0' + datetime.getHours() : datetime.getHours();
+      case 'mm':
+        return datetime.getMinutes() < 10 ? '0' + datetime.getMinutes() : datetime.getMinutes();
+      case 'SS':
+      case 'ss':
+        return datetime.getSeconds() < 10 ? '0' + datetime.getSeconds() : datetime.getSeconds();
+      case 'week':
+        return week[datetime.getDay()];
+    }
+  });
+}
+
+function formatMoney(val, dotLength = 2) {
+  var exp = getRegExp("\B(?=(?:\d{3})+$)", 'g');
+
+  val = Number(val);
+
+  var str = val.toFixed(dotLength);
+
+  if (dotLength == 0) {
+    str += '';
+    return str.replace(exp, ',');
+  }
+  var intSum = str.substring(0, str.indexOf('.')).replace(exp, ',');
+  var dot = str.substring(str.length, str.indexOf('.'));
+  return intSum + dot
+}
+
+function getDiffData(level0) {
+  level0 = (Math.abs(level0) / 1000) >> 0;
+
+  var oneDay = 86400;
+  var day = Math.floor(level0 / oneDay);
+  var leave1 = level0 % oneDay;
+
+  var oneHour = 3600;
+  var hours = Math.floor(leave1 / oneHour);
+
+  var oneMinutes = 60;
+  var leave2 = leave1 % oneHour
+  var minutes = Math.floor(leave2 / oneMinutes)
+
+  var leave3 = leave2 % oneMinutes
+  var seconds = Math.floor(leave3);
+  return {
+    day,
+    hours,
+    minutes,
+    seconds
+  };
+}
+
+function getDiffFormat(time) {
+  var nowDate = getDate();
+  time = nowDate.valueOf() - time * 1000;
+  var resData = getDiffData(time);
+
+  var str = '';
+  if (time < 0) {
+    str = '后开始';
+  } else {
+    str = '前';
+  }
+
+  if (resData.day > 0) {
+    return resData.day + '天' + str;
+  } else if (resData.hours > 0) {
+    return resData.hours + '小时' + str;
+  } else if (resData.minutes > 0) {
+    return resData.minutes + '分钟' + str;
+  } else if (resData.seconds > 0) {
+    return resData.seconds + '秒' + str;
+  }
+  return '';
+}
+
+function getIcon(id, type = 1) {
+  var globalUrl = 'https://events.duokong.com';
+  switch (type) {
+    case 2:
+      // 游戏类型图标 sport_id
+      return globalUrl + '/sport/' + id + '.png';
+    case 1:
+    default:
+      // 游戏队伍图标 team_id
+      return globalUrl + '/soccer/team/' + id + '.png';
+  }
+}
+
+function renderVs(data) {
+  if (data.event_status != '2') return 'VS'
+  if (data.home_score != ' ' && data.away_score != ' ') {
+    if (typeof (data.home_score) == 'undefined') return ' ';
+    return data.home_score + ' : ' + data.away_score;
+  }
+  return '- : -';
+}
+
+module.exports = {
+  getDiffFormat: getDiffFormat,
+  getDiffData: getDiffData,
+  formatMoney: formatMoney,
+  formatDate: formatDate,
+  getIcon: getIcon,
+  renderVs: renderVs
+}
